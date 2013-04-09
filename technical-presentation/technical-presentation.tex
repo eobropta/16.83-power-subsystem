@@ -89,9 +89,8 @@
 \section{DeMi}
 
 \begin{frame}
-	\frametitle{DeMi}
-	\begin{itemize}
-		\item Requirements:
+	\frametitle{Requirements}
+
 		
 	\[ E_{req,orb} = \sum_\text{modes}{\sum_\text{systems}{T_{mode}P_{sys,mode}}} \]
 	
@@ -99,16 +98,35 @@
 	
 	\[ E_{req,batt} = P_{req,avg} \times T_e\]
 	
-	\item Capacity:
+	(TBD)
 	
-	\[ E_{panels,orb} = \int_{orbit}{P_{panel}\cos\theta \ dt } \]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Capacity}
+	\begin{columns}
+	\begin{column}{0.5\textwidth}
+	$ \displaystyle E_{panels,orb} = \int_{orbit}{P_{panel}\cos\theta \ dt } $
+	\newline
+	\newline
+	$ \displaystyle P_{panels,avg} = \frac{E_{panels,orb}}{T_{orbit}} \approx 6.5 W \ \text{(TBR w/ STK)}$
 	
-	\[  P_{panels,avg} = \frac{E_{panels,orb}}{T_{orbit}} \]
+	\begin{center}
+	Check: $P_{panels,avg} \geq P_{req,avg}$ (almost), $E_{batt} \geq E_{req,batt}$	(OK)
+	\end{center}
 	
-	\item Check: $P_{panels,avg} \geq P_{req,avg}$, $E_{batt} \geq E_{req,batt}$
+	\end{column}
 	
-	\end{itemize}
+	\begin{column}{0.5\textwidth}
 	
+	\begin{figure}%
+	\includegraphics[width=\columnwidth]{Panel}%
+	\caption{Clyde Space 3U Cubesat solar panel}%
+	\label{}%
+	\end{figure}
+	\end{column}
+	
+	\end{columns}
 	
 \end{frame}
 
