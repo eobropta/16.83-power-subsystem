@@ -1,7 +1,7 @@
 \documentclass{beamer}
 
 \title{Power Subsystem Technical Update}
-\author{Troy Astorino \and Eddie Obropta \\ Jimmy Clark \and Vladimir Eremin}
+\author{Troy Astorino \and Eddie Obropta \and Jimmy Clark \and Vladimir Eremin}
 \date{April 9, 2013}
 \institute[16.83 -- MIT]{Space Systems Design \\ Massachusetts Institute of
   Technology}
@@ -29,7 +29,7 @@
 \section{General Power Calculations}
 \begin{frame}
   \frametitle{Power Needed from Solar Arrays}
-  \[P_{sa} = \frac{\left(\frac{P_e T_e}{X_e} + \frac{P_e
+  \[P_{sa} = \frac{\left(\frac{P_d T_d}{X_d} + \frac{P_e
         T_e}{X_e}\right)}{T_d}\]
 
   \begin{itemize}
@@ -86,10 +86,30 @@
   \end{center}
 \end{frame}
 
-\section{Demi}
+\section{DeMi}
 
 \begin{frame}
-	Foobar
+	\frametitle{DeMi}
+	\begin{itemize}
+		\item Requirements:
+		
+	\[ E_{req,orb} = \sum_\text{modes}{\sum_\text{systems}{T_{mode}P_{sys,mode}}} \]
+	
+	\[  P_{req,avg} = \frac{E_{req,orb}}{T_{orbit}} \]
+	
+	\[ E_{req,batt} = P_{req,avg} \times T_e\]
+	
+	\item Capacity:
+	
+	\[ E_{panels,orb} = \int_{orbit}{P_{panel}\cos\theta \ dt } \]
+	
+	\[  P_{panels,avg} = \frac{E_{panels,orb}}{T_{orbit}} \]
+	
+	\item Check: $P_{panels,avg} \geq P_{req,avg}$, $E_{batt} \geq E_{req,batt}$
+	
+	\end{itemize}
+	
+	
 \end{frame}
 
 \end{document}
