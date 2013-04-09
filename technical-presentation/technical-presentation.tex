@@ -28,12 +28,11 @@
 
 \section{General Power Calculations}
 \begin{frame}
-  \frametitle{Power Needed from Solar Arrays}
-  \[P_{sa} = \frac{\left(\frac{P_d T_d}{X_d} + \frac{P_e
-        T_e}{X_e}\right)}{T_d}\]
+  \frametitle{Energy Needed from Solar Arrays}
+  \[E_{sa} = \frac{P_d T_d}{X_d} + \frac{P_e T_e}{X_e}\]
 
   \begin{itemize}
-    \item $P_{sa}$ - power collected by solar array during day
+    \item $E_{sa}$ - energy collected by solar array during day
     \item $P_e$ - eclipse power requirements
     \item $P_d$ - day power requirements
     \item $T_d$ - day period
@@ -45,15 +44,12 @@
 
 \begin{frame}
   \frametitle{End of Life Power Density}
-  \[P_{BOL} = P_o I_d \cos{\theta}\]
-  \[P_{EOL} = P_{BOL} (1 - D)^L\]
+  \[\epsilon_{EOL} = \epsilon_o I_d (1 - D)^L\]
 
   \begin{itemize}
-    \item $P_{BOL}$ - beginning of life power density
-    \item $P_o$ - solar cell power output per unit area
+    \item $\epsilon_{EOL}$ - end of life power output per unit area
+    \item $\epsilon_o$ - solar cell power output per unit area
     \item $I_d$ - inherent degradation
-    \item $\theta$ - sun incident angle
-    \item $P_{EOL}$ - end of life power density
     \item $D$ - degradation per unit time
     \item $L$ - lifetime
   \end{itemize}
@@ -61,18 +57,19 @@
 
 \begin{frame}
   \frametitle{Solar Array Area}
-  \[A_{sa} = \frac{P_{sa}}{P_{EOL}}\]
+  \[A_{sa} = \frac{E_{sa}}{\epsilon_{EOL} \displaystyle \int_{\text{orbit day}} \cos{\theta}\,dt}\]
 
   \begin{itemize}
     \item $A_{sa}$ - solar array area
+    \item $\theta$ - sun incident angle
     \item $P_{sa}$ - power collected by solar array during day
-    \item $P_{EOL}$ - end of life power density
+    \item $\epsilon_{EOL}$ - end of life power density
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Battery Mass}
-  \[m_b = \frac{E_e}{u}\]
+  \[m_b = \frac{E_e}{u_b}\]
 
   \begin{itemize}
     \item $m_b$ - battery mass
@@ -83,6 +80,9 @@
 
 \begin{frame}
   \frametitle{Energy Collection through STK}
+  \begin{center}
+    \includegraphics[width=4.5in]{img/stk}
+  \end{center}
 \end{frame}
 
 \section{Holodeck}
@@ -131,7 +131,7 @@
 	\begin{column}{0.5\textwidth}
 	
 	\begin{figure}%
-	\includegraphics[width=\columnwidth]{Panel}%
+	\includegraphics[width=\columnwidth]{img/Panel}%
 	\caption{Clyde Space 3U Cubesat solar panel}%
 	\label{}%
 	\end{figure}
