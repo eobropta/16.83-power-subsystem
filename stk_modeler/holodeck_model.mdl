@@ -1,0 +1,19 @@
+Component Bus
+ Extrusion
+ FaceColor gold4
+ FaceStyle Filled
+ Length 1.702
+ NumVerts 4
+ Data 
+0.253 0.253 0.0
+0.253 0.253 0.0
+0.253 0.253 0.0
+0.253 0.253 0.0
+End Extrusion
+ EndComponent
+Component holodeck
+ Root
+ Refer
+ Component Bus
+ EndRefer
+ EndComponent
