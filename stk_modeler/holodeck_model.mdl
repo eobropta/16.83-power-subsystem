@@ -1,19 +1,55 @@
-Component Bus
- Extrusion
- FaceColor gold4
- FaceStyle Filled
- Length 1.702
+#Holodeck Power Model modified from TERsat
+#Created: 21 April 2013
+#Name: Holodeck
+#Class: 16.83 Spring 2013
+#Beam: m
+#Length: m
+#Height: m
+#Articulations:No
+#All units in meters
+SolarPanelGroup sa 29.5
+Component PlateSa
+SolarPanel sa
+Polygon
+ FaceColor blue
  NumVerts 4
  Data 
-0.253 0.253 0.0
-0.253 0.253 0.0
-0.253 0.253 0.0
-0.253 0.253 0.0
-End Extrusion
- EndComponent
+1.16833214455 1.16833214455 0.0
+1.16833214455 -1.16833214455 0.0
+-1.16833214455 -1.16833214455 0.0
+-1.16833214455 1.16833214455 0.0
+EndPolygon
+EndComponent
+Component SolarArray
+Refer
+ Component PlateSa
+Rotate 20 0 90
+Translate 0.0 1.42133214455 0.851
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 20 0 90
+Translate 0.0 -1.42133214455 0.851
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 200 0 90
+Translate 0.0 1.42133214455 0.861
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 200 0 90
+Translate 0.0 -1.42133214455 0.861
+EndRefer 
+EndComponent
+Component Body
+ Refer
+ Component SolarArray
+ EndRefer
+  EndComponent
 Component holodeck
  Root
  Refer
- Component Bus
+ Component Body
  EndRefer
  EndComponent

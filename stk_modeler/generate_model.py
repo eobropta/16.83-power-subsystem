@@ -5,10 +5,11 @@
 
 # Updated 4/12/2013
 
-#dimensions 
+#dimensions in meter
 
 from math import *
 import numpy as np
+from component_writer import *
 
 #'sa' = solar array
 sa_area = 5.46 #m^2 with 30% margin
@@ -20,31 +21,93 @@ bus_y = .506
 
 #vertices of bus base stored in 3x1 arrays
 
-bus_base = np.array( [[bus_x/2.0, bus_y/2.0, 0.0 ], [bus_x/2.0, bus_y/2.0, 0.0 ], [bus_x/2.0, bus_y/2.0, 0.0 ], [bus_x/2.0, bus_y/2.0, 0.0 ]] )
+plate_base = np.array( [[bus_x/2.0, bus_y/2.0, 0.0 ], [bus_x/2.0, -bus_y/2.0, 0.0 ], [-bus_x/2.0, -bus_y/2.0, 0.0 ], [-bus_x/2.0, bus_y/2.0, 0.0 ]] )
+
+plate_side = np.array( [[bus_z/2.0, bus_y/2.0, 0.0 ], [bus_z/2.0, -bus_y/2.0, 0.0 ], [-bus_z/2.0, -bus_y/2.0, 0.0 ], [-bus_z/2.0, bus_y/2.0, 0.0 ]] )
 
 sa_case = 1
 #square solar arrays
 if sa_case == 1:
-    sa_length = sqrt(5.46)
-    sa_width = sqrt(5.46)
+    sa_x = sqrt(sa_area)
+    sa_y = sqrt(sa_area)
+
+plate_sa = np.array( [[sa_x/2.0, sa_y/2.0, 0.0 ], [sa_x/2.0, -sa_y/2.0, 0.0 ], [-sa_x/2.0, -sa_y/2.0, 0.0 ], [-sa_x/2.0, sa_y/2.0, 0.0 ]] )
+
 
 
 #write Bus
 f = open('holodeck_model.mdl', 'w')
-bus_header = 'Component Bus\n Extrusion\n FaceColor gold4\n FaceStyle Filled\n Length ' + str(bus_z) + '\n NumVerts ' + str(bus_base.shape[0]) + '\n Data \n'
 
-bus_data = ''
-for i in range(bus_base.shape[0]):
-    print i
-    bus_data = bus_data + str(bus_base[i][0]) + ' ' + str(bus_base[i][1]) + ' ' + str(bus_base[i][2]) + '\n'
+file_header = '#Holodeck Power Model modified from TERsat\n#Created: 21 April 2013\n#Name: Holodeck\n#Class: 16.83 Spring 2013\n#Beam: m\n#Length: m\n#Height: m\n#Articulations:No\n#All units in meters\n'
+f.write(file_header)
 
-bus_footer = 'End Extrusion\n EndComponent\n'
+sa_efficiency = 29.5
+sa = 'SolarPanelGroup sa ' + str(sa_efficiency) + '\n'
+#sa_2 = 'SolarPanelGroup sa2 ' + str(sa_efficiency) + '\n'
+f.write(sa)
 
-bus_write = bus_header + bus_data + bus_footer
+plate_base_str = polygon('PlateBase','gold4',plate_base)
+plate_side_str = polygon('PlateSide','gold4',plate_side)
+plate_sa_str = polygon('PlateSa','blue',plate_sa) 
 
-f.write(bus_write)
+## Write Bus 
+# f.write('Component ' + 'PlateBase' + '\n')
+# f.write(plate_base_str)
+# f.write('EndComponent\n')
 
+# f.write('Component ' + 'PlateSide' + '\n')
+# f.write(plate_side_str)
+# f.write('EndComponent\n')
+
+## Write SolarArray
+f.write('Component ' + 'PlateSa' + '\n')
+f.write('SolarPanel sa\n')
+f.write(plate_sa_str)
+f.write('EndComponent\n')
+
+
+# #rotation matrix for base
+# R = np.array([[0,0,0],[0,0,0]])
+# #translation matrix for base
+# T = np.array([[0,0,0],[0,0,bus_z]])
+# name = 'PlateBase'
+# base_str = transform(name,R,T)
+
+# f.write('Component ' + 'Base' + '\n')
+# f.write(base_str)
+# f.write('EndComponent\n')
+
+# #rotation matrix for base
+# R = np.array([[0,90,0],[0,90,0],[0,90,90],[0,90,90]])
+# #translation matrix for base
+# T = np.array([[-bus_x/2.0,0,bus_z/2.0],[bus_x/2.0,0,bus_z/2.0],[0,bus_y/2.0,bus_z/2.0],[0,-bus_y/2.0,bus_z/2.0]])
+# name = 'PlateSide'
+# side_str = transform(name,R,T)
+
+# f.write('Component ' + 'Side' + '\n')
+# f.write(side_str)
+# f.write('EndComponent\n')
+
+## Write SA
+
+#rotation matrix for sa
+R = np.array([[20,0,90],[20,0,90],[200,0,90],[200,0,90]])
+#translation matrix for sa
+T = np.array([[0.0,bus_y/2.0+sa_y/2.0,bus_z/2.0],[0.0,-(bus_y/2.0+sa_y/2.0),bus_z/2.0],[0.0,bus_y/2.0+sa_y/2.0,bus_z/2.0+.01],[0.0,-(bus_y/2.0+sa_y/2.0),bus_z/2.0+.01]])
+name = 'PlateSa'
+solar_array_str = transform(name,R,T)
+
+f.write('Component ' + 'SolarArray' + '\n')
+f.write(solar_array_str)
+f.write('EndComponent\n')
+
+#add to body
+#body = 'Component Body\n Refer\n Component Side\n EndRefer\n Refer\n Component Base\n EndRefer\n Refer\n Component SolarArray\n EndRefer\n  EndComponent\n'
+
+body = 'Component Body\n Refer\n Component SolarArray\n EndRefer\n  EndComponent\n'
+
+f.write(body)
 #write root
-
-root = 'Component holodeck\n Root\n Refer\n Component Bus\n EndRefer\n EndComponent\n'
+root = 'Component holodeck\n Root\n Refer\n Component Body\n EndRefer\n EndComponent\n'
 f.write(root)
+    
