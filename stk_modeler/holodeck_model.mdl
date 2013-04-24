@@ -8,6 +8,28 @@
 #Articulations:No
 #All units in meters
 SolarPanelGroup sa 29.5
+Component PlateBase
+Polygon
+ FaceColor gold4
+ NumVerts 4
+ Data 
+0.253 0.253 0.0
+0.253 -0.253 0.0
+-0.253 -0.253 0.0
+-0.253 0.253 0.0
+EndPolygon
+EndComponent
+Component PlateSide
+Polygon
+ FaceColor gold4
+ NumVerts 4
+ Data 
+0.851 0.253 0.0
+0.851 -0.253 0.0
+-0.851 -0.253 0.0
+-0.851 0.253 0.0
+EndPolygon
+EndComponent
 Component PlateSa
 SolarPanel sa
 Polygon
@@ -20,29 +42,69 @@ Polygon
 -1.16833214455 1.16833214455 0.0
 EndPolygon
 EndComponent
+Component Base
+Refer
+ Component PlateBase
+Rotate 0 0 0
+Translate 0.0 0.0 0.0
+EndRefer 
+Refer
+ Component PlateBase
+Rotate 0 0 0
+Translate 0.0 0.0 1.702
+EndRefer 
+EndComponent
+Component Side
+Refer
+ Component PlateSide
+Rotate 0 90 0
+Translate -0.253 0.0 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 0
+Translate 0.253 0.0 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 90
+Translate 0.0 0.253 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 90
+Translate 0.0 -0.253 0.851
+EndRefer 
+EndComponent
 Component SolarArray
 Refer
  Component PlateSa
-Rotate 20 0 90
+Rotate 0 0 90
 Translate 0.0 1.42133214455 0.851
 EndRefer 
 Refer
  Component PlateSa
-Rotate 20 0 90
+Rotate 0 0 90
 Translate 0.0 -1.42133214455 0.851
 EndRefer 
 Refer
  Component PlateSa
-Rotate 200 0 90
+Rotate 180 0 90
 Translate 0.0 1.42133214455 0.861
 EndRefer 
 Refer
  Component PlateSa
-Rotate 200 0 90
+Rotate 180 0 90
 Translate 0.0 -1.42133214455 0.861
 EndRefer 
 EndComponent
 Component Body
+  Refer
+ Component Side
+ EndRefer
+ Refer
+ Component Base
+ EndRefer
  Refer
  Component SolarArray
  EndRefer
@@ -50,6 +112,10 @@ Component Body
 Component holodeck
  Root
  Refer
+ Articulation SolarPoint
+ yRotate Rotate -360 0 360
+ EndArticulation
+ Pointing SolarPoint 0 0 1
  Component Body
  EndRefer
  EndComponent
