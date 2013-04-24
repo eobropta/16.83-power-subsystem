@@ -1,0 +1,111 @@
+#Holodeck Power Model modified from TERsat
+#Created: 21 April 2013
+#Name: Holodeck
+#Class: 16.83 Spring 2013
+#Beam: m 
+#Length: m 
+#Height: m 
+#Articulations:No
+#All units in meters
+
+SolarPanelGroup tersat_z 26.6 	# efficiency (%) of z-axis panel group
+SolarPanelGroup tersat_y 26.6	# " " y-axis panel group
+SolarPanelGroup tersat_x 26.6	# " " x-axis panel group
+
+Component PlateTop
+	SolarPanel tersat_z
+	Polygon
+		FaceColor blue
+		NumVerts 4
+		Data
+			.2032 -.2032 0.0	# 0.2032 m = 8 inches
+			.2032 .2032 0.0		# so the panel is 16x16 inches
+			-.2032 .2032 0.0
+			-.2032 -.2032 0.0
+	EndPolygon
+EndComponent
+Component PlateBottom
+	Polygon
+		FaceColor gold3
+		TxDef goldfoil.tga AA
+		TxScale  3 3 1
+		TxGen
+		NumVerts 4
+		Data
+			.2032 -.2032 0.0	# again, 16x16 inches
+			.2032 .2032 0.0
+			-.2032 .2032 0.0
+			-.2032 -.2032 0.0 
+	EndPolygon
+EndComponent
+Component PlateSideSa
+	SolarPanel tersat_y
+	Polygon
+		FaceColor blue
+		NumVerts 4
+		Data
+			.2032 -.1524 0.0	# 0.1524 m = 6 inches
+			.2032 .1524 0.0		# so the panel is 16x12 inches
+			-.2032 .1524 0.0
+			-.2032 -.1524 0.0 
+	EndPolygon
+EndComponent
+Component PlateSideSa2
+	SolarPanel tersat_x
+	Polygon
+		FaceColor blue
+		NumVerts 4
+		Data
+			0.0 .2032 -.1524 
+			0.0 .2032 .1524 
+			0.0 -.2032 .1524 
+			0.0 -.2032 -.1524  
+	EndPolygon
+EndComponent
+
+Component Side
+	Refer
+		Component PlateSideSa
+		Rotate 90 0 0
+		Translate 0.0 -0.2032 0.0
+	EndRefer
+	Refer
+		Component PlateSideSa
+		Rotate -90 0 0
+		Translate 0.0 0.2032 0.0
+	EndRefer        
+	Refer
+		Component PlateSideSa2
+		Translate 0.2032 0.0 0.0
+	EndRefer
+	Refer
+		Component PlateSideSa2
+		Rotate 0 0 180
+		Translate -0.2032 0.0 0.0
+	EndRefer
+EndComponent
+Component TopDown
+	Refer
+		Component PlateBottom
+		Translate 0.0 0.0 0.1524
+	EndRefer
+	Refer
+		Component PlateTop
+		Rotate 0 180 0
+		Translate 0.0 0.0 -0.1524
+	EndRefer
+EndComponent
+Component Body
+	Refer
+		Component Side
+	EndRefer
+	Refer
+		Component TopDown
+	EndRefer
+EndComponent
+Component tersat
+	Root
+	Refer
+		Component Body
+	EndRefer
+EndComponent
