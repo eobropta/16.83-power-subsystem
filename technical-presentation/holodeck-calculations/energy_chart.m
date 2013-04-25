@@ -1,10 +1,11 @@
-function [ output_args ] = energy_chart( power, duration, orbit_period, eclipse_duration)
+function [ output_args ] = energy_chart( ...
+    power, duration, orbit_period, eclipse_duration)
 %energy_chart Generates an chart of energy usage
-%energy is a 1D array of the mode power requirements. The last mode will
-%finish the orbital time
-%duration is a 1D array of the mode durations, for all but the last mode
-%orbit_period is the time for the orbit to complete
-%eclipse time is 
+%   energy - a 1D array of the mode power requirements. The last mode will
+%             finish the orbital time
+%   duration - a 1D array of the mode durations, for all but the last mode
+%   orbit_period - the time for the orbit to complete
+%   eclipse_time - time the spacecraft is in eclipse
 
 figure;
 hold on;
