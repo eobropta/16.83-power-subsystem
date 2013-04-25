@@ -32,13 +32,13 @@
   \[E_{sa} = \frac{P_d T_d}{X_d} + \frac{P_e T_e}{X_e}\]
 
   \begin{itemize}
-    \item $E_{sa}$ - energy collected by solar array during day
-    \item $P_e$ - eclipse power requirements
-    \item $P_d$ - day power requirements
-    \item $T_d$ - day period
-    \item $T_e$ - eclipse period
-    \item $X_d$ - efficiency of path to individual loads during day
-    \item $X_e$ - efficiency of path to individual loads during eclipse
+  \item $E_{sa}$ - energy collected by solar array during day
+  \item $P_e$ - eclipse power requirements
+  \item $P_d$ - day power requirements
+  \item $T_d$ - day period
+  \item $T_e$ - eclipse period
+  \item $X_d$ - efficiency of path to individual loads during day
+  \item $X_e$ - efficiency of path to individual loads during eclipse
   \end{itemize}
 \end{frame}
 
@@ -47,11 +47,11 @@
   \[\epsilon_{EOL} = \epsilon_o I_d (1 - D)^L\]
 
   \begin{itemize}
-    \item $\epsilon_{EOL}$ - end of life power output per unit area
-    \item $\epsilon_o$ - solar cell power output per unit area
-    \item $I_d$ - inherent degradation
-    \item $D$ - degradation per unit time
-    \item $L$ - lifetime
+  \item $\epsilon_{EOL}$ - end of life power output per unit area
+  \item $\epsilon_o$ - solar cell power output per unit area
+  \item $I_d$ - inherent degradation
+  \item $D$ - degradation per unit time
+  \item $L$ - lifetime
   \end{itemize}
 \end{frame}
 
@@ -60,10 +60,10 @@
   \[A_{sa} = \frac{E_{sa}}{\epsilon_{EOL} \displaystyle \int_{\text{orbit day}} \cos{\theta}\,dt}\]
 
   \begin{itemize}
-    \item $A_{sa}$ - solar array area
-    \item $\theta$ - sun incident angle
-    \item $P_{sa}$ - power collected by solar array during day
-    \item $\epsilon_{EOL}$ - end of life power density
+  \item $A_{sa}$ - solar array area
+  \item $\theta$ - sun incident angle
+  \item $P_{sa}$ - power collected by solar array during day
+  \item $\epsilon_{EOL}$ - end of life power density
   \end{itemize}
 \end{frame}
 
@@ -72,9 +72,9 @@
   \[m_b = \frac{E_e}{u_b}\]
 
   \begin{itemize}
-    \item $m_b$ - battery mass
-    \item $E_e$ - eclipse energy
-    \item $u_b$ - battery specific energy
+  \item $m_b$ - battery mass
+  \item $E_e$ - eclipse energy
+  \item $u_b$ - battery specific energy
   \end{itemize}
 \end{frame}
 
@@ -87,62 +87,91 @@
 
 \section{Holodeck}
 \begin{frame}
-  \frametitle{Two Options: Optical Communications and RF Communications}
-  \begin{center}
-    Using optical communications instead of RF communications changes
-    duration and power usage for almost all modes.
-
-    Will show more complete calculations for RF communications, rough
-    calculations for optical communications.
-  \end{center}
+  \frametitle{Constants Used in Calculations}
+  \begin{itemize}
+  \item $\epsilon_0 = 383 \text{W}/\text{m}^2$
+  \item $D = 0.0375/\text{year}$
+  \item $L = 2 \text{years}$
+  \item $I_d = 0.72$
+  \item $\epsilon_{EOL} = 255 \text{W}/\text{m}^2$
+  \item $u_b = 125 \text{W-hr}/\text{kg}$
+  \item $rho_b = 2400 \text{kg}/\text{m}^3$
+  \item $\sigma_{sa} = 3.8 \text{kg}/\text{m}^2$
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{RF}
+  \frametitle{RF Communications Results}
   \begin{center}
-
-
-
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Optical Case 1}
-  \begin{center}
-
     \begin{itemize}
-    \item $E_{sa}$ - energy collected by solar array during day
-    \item $L$ = 0.93
-    \item $\epsilon_{EOL}$ = 255 W/m^2
-    \item $A_{sa}$ = 2.43 [ ] m^2 
-    \item $m_{sa}$ = 0.426 [ ] kg
 
-    \item $E_e$ = 53.3 W-hr
-    \item $m_b$ = 0.426 [ ] kg
+    \item $A_{sa} = 3.2 [4.1] \text{m}^2$
+    \item $m_{sa} = 12.1 [15.7] \text{kg}$
 
-
+    \item $E_e = 134 \text{W-hr}$
+    \item $m_b = 1.07 [1.39] \text{kg}$
+    \item $V_b = 445 [579] \text{cm}^3$
     \end{itemize}
 
+  \end{center}
+\end{frame}
 
+\begin{frame}
+  \frametitle{Optical Communications Case 1}
+  \begin{center}
+    \begin{columns}
+      \begin{column}{0.4\textwidth}
+        \begin{itemize}
+        \item $E_{sa} = 331 \text{W-hr}$
+        \item $A_{sa} = 3.94 [5.12] \text{m}^2 $
+        \item $m_{sa} = 15.0 [19.5] \text{kg}$
+
+        \item $E_e = 53.3 \text{W-hr}$
+        \item $m_b = 0.426 [0.554] \text{kg}$
+        \item $V_b = 178 [231] \text{cm}^3$
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.6\textwidth}
+        \includegraphics[width=3in]{img/optical-case-1}
+      \end{column}
+    \end{columns}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Optical Communications Case 2}
+  \begin{center}
+    \begin{columns}
+      \begin{column}{0.4\textwidth}
+
+        \begin{itemize}
+        \item $E_{sa} = 369 \text{W-hr}$
+        \item $A_{sa} = 2.17 [2.82] \text{m}^2$
+        \item $m_{sa} = 8.25 [10.7] \text{kg}$
+
+        \item $E_e = 188 \text{W-hr}$
+        \item $m_b = 0.946 [1.23] \text{kg}$
+        \item $V_b = 394 [512] \text{cm}^3$
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.6\textwidth}
+        \includegraphics[width=3in]{img/optical-case-2}
+      \end{column}
+    \end{columns}
 
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Optical Case 2}
+  \frametitle{Conclusions}
   \begin{center}
+    Optical downlink is a superior transmission option from a power standpoint.
+    \vspace{3em}
 
-
-
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Optical Conclusions}
-  \begin{center}
-
-
-
+    However, since optical downlink allows more data capture, there are scenarios
+    that could require significant power usage and can drive required size of the
+    solar panels to be larger.  In order to keep arrays smaller power
+    must impose (very small) constraints on CONOPS.
   \end{center}
 \end{frame}
 
