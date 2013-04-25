@@ -79,23 +79,23 @@ EndComponent
 Component SolarArray
 Refer
  Component PlateSa
-Rotate 45 0 90
-Translate 0.0 1.42133214455 0.851
+Rotate 45 0 45
+Translate 1.16833214455 1.16833214455 0.851
 EndRefer 
 Refer
  Component PlateSa
-Rotate 45 0 90
-Translate 0.0 -1.42133214455 0.851
+Rotate 45 0 45
+Translate -1.16833214455 -1.16833214455 0.851
 EndRefer 
 Refer
  Component PlateSa
-Rotate 225 0 90
-Translate 0.0 1.42133214455 0.861
+Rotate 225 0 45
+Translate 1.16833214455 1.16833214455 0.861
 EndRefer 
 Refer
  Component PlateSa
-Rotate 225 0 90
-Translate 0.0 -1.42133214455 0.861
+Rotate 225 0 45
+Translate -1.16833214455 -1.16833214455 0.861
 EndRefer 
 EndComponent
 Component Body

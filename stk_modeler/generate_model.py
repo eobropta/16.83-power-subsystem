@@ -93,10 +93,20 @@ f.write('EndComponent\n')
 ## Write SA
 
 #rotation matrix for sa
+#sa_angle = 45
 sa_angle = 45
-R = np.array([[sa_angle,0,90],[sa_angle,0,90],[sa_angle+180,0,90],[sa_angle+180,0,90]])
+#sa_z_angle = 45
+sa_z_angle = 45
+R = np.array([[sa_angle,0,sa_z_angle],[sa_angle,0,sa_z_angle],[sa_angle+180,0,sa_z_angle],[sa_angle+180,0,sa_z_angle]])
 #translation matrix for sa
-T = np.array([[0.0,bus_y/2.0+sa_y/2.0,bus_z/2.0],[0.0,-(bus_y/2.0+sa_y/2.0),bus_z/2.0],[0.0,bus_y/2.0+sa_y/2.0,bus_z/2.0+.01],[0.0,-(bus_y/2.0+sa_y/2.0),bus_z/2.0+.01]])
+
+T_sa1x =  sa_x/2.0
+T_sa1y =  sa_y/2.0
+T_sa1z = bus_z/2.0
+T_sa2x = -T_sa1x
+T_sa2y = -T_sa1y
+T_sa2z = bus_z/2.0
+T = np.array([[T_sa1x,T_sa1y,T_sa1z],[T_sa2x,T_sa2y,T_sa2z],[T_sa1x,T_sa1y,T_sa1z+.01],[T_sa2x,T_sa2y,T_sa2z+.01]])
 
 #T = np.array([[0.0,bus_y/2.0+sa_y/2.0,0.0],[0.0,-(bus_y/2.0+sa_y/2.0),0.0],[0.0,bus_y/2.0+sa_y/2.0,0.01],[0.0,-(bus_y/2.0+sa_y/2.0),0.01]])
 
