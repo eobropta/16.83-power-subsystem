@@ -36,7 +36,7 @@ plate_sa = np.array( [[sa_x/2.0, sa_y/2.0, 0.0 ], [sa_x/2.0, -sa_y/2.0, 0.0 ], [
 
 
 #write Bus
-f = open('holodeck_model.mdl', 'w')
+f = open('holodeck_model2.mdl', 'w')
 
 file_header = '#Holodeck Power Model modified from TERsat\n#Created: 21 April 2013\n#Name: Holodeck\n#Class: 16.83 Spring 2013\n#Beam: m\n#Length: m\n#Height: m\n#Articulations:No\n#All units in meters\n'
 f.write(file_header)
@@ -94,13 +94,14 @@ f.write('EndComponent\n')
 
 #rotation matrix for sa
 #sa_angle = 45
-sa_angle = 70
+sa_angle = 45
 #sa_z_angle = 45
-sa_z_angle = 45
+sa_z_angle = 0
 R = np.array([[sa_angle,0,sa_z_angle],[sa_angle,0,sa_z_angle],[sa_angle+180,0,sa_z_angle],[(sa_angle+180),0,sa_z_angle]])
 #translation matrix for sa
 
-T_sa1x =  bus_x/2.0 + sa_x/2.0
+#T_sa1x =  bus_x/2.0 + sa_x/2.0
+T_sa1x =  0.0
 T_sa1y =  bus_y/2.0 + sa_y/2.0
 T_sa1z = bus_z/2.0
 T_sa2x = -T_sa1x
