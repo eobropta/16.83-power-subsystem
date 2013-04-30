@@ -96,7 +96,7 @@ f.write('EndComponent\n')
 #sa_angle = 45
 sa_angle = 45
 #sa_z_angle = 45
-sa_z_angle = 0
+sa_z_angle = 90
 R = np.array([[sa_angle,0,sa_z_angle],[sa_angle,0,sa_z_angle],[sa_angle+180,0,sa_z_angle],[(sa_angle+180),0,sa_z_angle]])
 #translation matrix for sa
 
@@ -131,6 +131,6 @@ body = 'Component Body\n  Refer\n Component Side\n EndRefer\n Refer\n Component 
 
 f.write(body)
 #write root
-root = 'Component holodeck\n Root\n Refer\n Articulation SolarPoint\n yRotate Rotate -360 0 360\n EndArticulation\n Pointing SolarPoint 0 0 1\n Component Body\n EndRefer\n EndComponent\n'
+root = 'Component holodeck\n Root\n Refer\n Articulation SolarPoint\n zRotate Rotate -360 0 360\n EndArticulation\n Pointing SolarPoint 0 0 1\n Component Body\n EndRefer\n EndComponent\n'
 f.write(root)
     
