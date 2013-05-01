@@ -15,11 +15,11 @@ dl_time = 10; %min
 rotation_time = 1; %min
 max_dc_time = 40; %min
 
-mode_power = [dc sms dl sms dc];
-mode_duration = [max_dc_time rotation_time dl_time rotation_time ...
-    (orbit_duration - max_dc_time - 2*rotation_time - dl_time)]*60;
+mode_power = [dc sms dl sms];
+mode_duration = [max_dc_time rotation_time dl_time  ...
+    (orbit_duration - max_dc_time - rotation_time - dl_time)]*60;
 
-stk_mat_file = '../stk_power_data/case_y45_z45_sept_315_2-8.mat';
+stk_mat_file = '../stk_power_data/case_y45_z45_sept_315.mat';
 
 x_solar = 0.8;
 x_batt = 0.6;
