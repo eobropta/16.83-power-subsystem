@@ -12,7 +12,7 @@ import numpy as np
 from component_writer import *
 
 #'sa' = solar array
-sa_area = 2.3 #m^2 with 30% margin
+sa_area = 2.75 #m^2 with 30% margin
 
 #'bus' = satellite body size
 bus_z = 1.702 
