@@ -1,25 +1,35 @@
 clear all
 close all
 
-dl = 188.97;
-dc = 228.97;
+
+%% Single orbit
+dl = 195;
+dc = 250;
+sms = 117;
 
 dt = 60; % sec
 
-orbit_duration = 93.59; %min
+orbit_duration = 94.62; %min
 
 dl_time = 10; %min
-dc_time = (orbit_duration - 2*dl_time) / 2;
-num_orbits = 1;
+rotation_time = 1; %min
+max_dc_time = 40; %min
 
-mode_duration = repmat([dl_time dc_time], 1, num_orbits*4) * 60;
-mode_power = repmat([dl dc], 1, num_orbits * 4);
+mode_power = [dc sms dl sms dc];
+mode_duration = [max_dc_time rotation_time dl_time rotation_time ...
+    (orbit_duration - max_dc_time - 2*rotation_time - dl_time)]*60;
 
-stk_file = '../stk_power_data/case_y45_z45_2-25m_60s.txt';
+stk_mat_file = '../stk_power_data/case_y45_z45_sept_315';
 
 x_solar = 0.8;
 x_batt = 0.6;
 min_charge = 0.3;
 
 analyze_power(...
-    stk_file, mode_power, mode_duration, x_solar, x_batt, min_charge, dt);
+    stk_mat_file, mode_power, mode_duration, x_solar, x_batt, min_charge, dt);
+
+%% Many orbits
+
+stk_file_year = '../stk_power_data/case_y45_z45_300km_year.txt';
+dt_year = 360;
+plot_power_input(stk_file_year, dt_year);
