@@ -12,6 +12,4 @@ plot(time,power,'-g')
 xlabel('time [days]','FontSize',24)
 ylabel('power [W]','FontSize',24)
 title('Power Collection','FontSize',36)
-
-h = get(gca)
 set(gca,'FontSize',14)
