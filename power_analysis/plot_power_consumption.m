@@ -1,8 +1,7 @@
 clear all 
 close all
 
-load('16.83/stk_data/power_y45_z45_300km_year')
-
+load('../stk_power_data/case_y45_z45_year_315');
 
 time = 0:360:(length(power)-1)*360;
 time = time/24/3600; % days
