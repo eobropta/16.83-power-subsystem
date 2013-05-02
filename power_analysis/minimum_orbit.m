@@ -3,7 +3,7 @@ function [ min_orbit, start_idx, file_num ] = minimum_orbit( ...
 %minimum_orbit Calculates the orbit which collects the least energy from the
 %power vector in the power_mat_file
 
-orbit_steps = ceil(orbital_period / dt);
+orbit_steps = floor(orbital_period / dt);
 power_1 = load_power_data(power_mat_file_1, dt);
 power_2 = load_power_data(power_mat_file_2, dt);
 

@@ -1,9 +1,10 @@
-function [ output_args ] = analyze_power( ...
-    stk_mat_file, mode_power, mode_duration, x_solar, x_batt, min_charge, dt)
+function analyze_power( ...
+    stk_mat_file, mode_power, mode_duration, x_solar, x_batt, ...
+    min_charge, lifetime_degredation, dt)
 %analyze_power Looks at the power collected by the satellite and the power
 %required and makes sure that the system is feasible
 
-power_collected = load_power_data(stk_mat_file);
+power_collected = load_power_data(stk_mat_file) * lifetime_degredation;
 power_required = gen_baseline_power_requirements(mode_power, mode_duration, dt);
 power_required = add_pathway_inefficiencies(power_required, power_collected, x_solar, x_batt);
 
