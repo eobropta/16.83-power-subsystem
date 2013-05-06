@@ -6,9 +6,9 @@ function plot_surplus( surplus_power, dt )
 
 figure;
 hold on;
-title('Power Surplus', 'FontSize', 18)
-xlabel('time [min]', 'FontSize', 14)
-ylabel('power [W]', 'FontSize', 14)
+title('Power Surplus', 'FontSize', 20)
+xlabel('time [min]', 'FontSize', 16)
+ylabel('power [W]', 'FontSize', 16)
 set(gca, 'FontSize', 14)
 
 time = 0:dt:dt*length(surplus_power)-1;
