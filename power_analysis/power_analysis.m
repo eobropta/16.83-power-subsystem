@@ -16,22 +16,25 @@ orbit_duration = 94.62; %min
 
 dl_time = 10; %min
 rotation_time = 1; %min
-dc_time = 35; %min
-dc_time_2 = 12;
+dc_time_1 = 44; %min
+dc_time_2 = 22;
+sms_time_1 = 7.31;
+sms_time_2 = 10.31;
+remaining_time = orbit_duration - (dc_time_1 + sms_time_1 + dl_time + rotation_time + dc_time_2);
 
 % mode_power = [dc sms dl sms dc sms dl sms];
 % dc_time = (orbit_duration - 2*dl_time - 4*rotation_time) / 2;
 % mode_duration = [dc_time rotation_time dl_time rotation_time ...
 %     dc_time rotation_time dl_time rotation_time]*60;
-mode_power = [dc rot dl rot dc sms];
-mode_duration = [dc_time rotation_time dl_time rotation_time dc_time_2 ...
-    (orbit_duration - dc_time - rotation_time - dl_time - dc_time_2)]*60;
+
+mode_power = [dc sms dl sms dc sms];
+mode_duration = [dc_time_1 sms_time_1 dl_time rotation_time dc_time_2 remaining_time]*60;
 
 num_orbits = 1;
 mode_power = repmat(mode_power, 1, num_orbits);
 mode_duration = repmat(mode_duration, 1, num_orbits);
 
-stk_mat_file = '../stk_power_data/case_y45_z45_nov_135';
+stk_mat_file = '../stk_power_data/case_y45_z45_sept_315_2-8';
 
 x_solar = 0.8;
 x_batt = 0.6;
