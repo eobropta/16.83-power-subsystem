@@ -1,6 +1,8 @@
 clear all
 close all
 
+%% Minimum orbit
+stk_file = 'stk_power_data/organized/case_y0_z0_2-25m_360s_year.mat';
 
 %% Single orbit
 dl = 195;
