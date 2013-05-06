@@ -1,8 +1,32 @@
 clear all
 close all
 
-%% Minimum orbit
-stk_file = 'stk_power_data/organized/case_y0_z0_2-25m_360s_year.mat';
+%% Orbital constants
+orbit_duration = 94.62; %min
+
+%% Minimum orbit calcs for orientations
+dt = 360;
+
+[y0_z0_energy_mean, y0_z0_energy_std] = analyze_orbital_energy(...
+    '../stk_power_data/organized/case_y0_z0_2-25m_360s_year', ...
+    '../stk_power_data/organized/case_y0_z0_2-25m_360s_year', ...
+    orbit_duration * 60, dt, 0, 0)
+
+[y0_z135_energy_mean, y0_z135_energy_std] = analyze_orbital_energy(...
+    '../stk_power_data/organized/case_y0_z135_2-25m_360s_year', ...
+    '../stk_power_data/organized/case_y0_z315_2-25m_360s_year', ...
+    orbit_duration * 60, dt, 0, 45)
+
+[y45_z0_energy_mean, y45_z0_energy_std] = analyze_orbital_energy(...
+    '../stk_power_data/organized/case_y45_z0_2-25m_360s_year', ...
+    '../stk_power_data/organized/case_y45_z180_2-25m_360s_year', ...
+    orbit_duration * 60, dt, 45, 0)
+
+[y45_z135_energy_mean, y45_z135_energy_std] = analyze_orbital_energy(...
+    '../stk_power_data/organized/case_y45_z135_2-25m_360s_year', ...
+    '../stk_power_data/organized/case_y45_z315_2-25m_360s_year', ...
+    orbit_duration * 60, dt, 45, 45)
+
 
 %% Single orbit
 dl = 195;
@@ -13,8 +37,6 @@ reaction_wheel_power = 22;
 rot = sms + reaction_wheel_power;
 
 dt = 60; % sec
-
-orbit_duration = 94.62; %min
 
 dl_time = 10; %min
 rotation_time = 1; %min

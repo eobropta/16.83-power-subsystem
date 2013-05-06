@@ -6,9 +6,9 @@ function plot_power( power_collected, power_required, dt )
 
 figure;
 hold on;
-title('Energy Collection and Usage', 'FontSize', 18)
-xlabel('time [min]', 'FontSize', 14)
-ylabel('power [W]', 'FontSize', 14)
+title('Energy Collection and Usage', 'FontSize', 20)
+xlabel('time [min]', 'FontSize', 16)
+ylabel('power [W]', 'FontSize', 16)
 set(gca, 'FontSize', 14)
 
 n_steps = min(length(power_collected), length(power_required));
