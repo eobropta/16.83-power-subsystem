@@ -12,7 +12,7 @@ import numpy as np
 from component_writer import *
 
 #'sa' = solar array
-sa_area = 2.25 #m^2 with 30% margin
+sa_area = 3.00 #m^2 with 30% margin
 
 #'bus' = satellite body size
 bus_z = 1.702 
@@ -36,7 +36,7 @@ plate_sa = np.array( [[sa_x/2.0, sa_y/2.0, 0.0 ], [sa_x/2.0, -sa_y/2.0, 0.0 ], [
 
 
 #write Bus
-f = open('holodeck_y45_z0_2-25m.mdl', 'w')
+f = open('holodeck_y45_z0_3m.mdl', 'w')
 
 file_header = '#Holodeck Power Model modified from TERsat\n#Created: 21 April 2013\n#Name: Holodeck\n#Class: 16.83 Spring 2013\n#Beam: m\n#Length: m\n#Height: m\n#Articulations:No\n#All units in meters\n'
 f.write(file_header)

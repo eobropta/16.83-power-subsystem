@@ -36,10 +36,10 @@ Polygon
  FaceColor blue
  NumVerts 4
  Data 
-0.637377439199 0.637377439199 0.0
-0.637377439199 -0.637377439199 0.0
--0.637377439199 -0.637377439199 0.0
--0.637377439199 0.637377439199 0.0
+0.612372435696 0.612372435696 0.0
+0.612372435696 -0.612372435696 0.0
+-0.612372435696 -0.612372435696 0.0
+-0.612372435696 0.612372435696 0.0
 EndPolygon
 EndComponent
 Component Base
@@ -80,22 +80,22 @@ Component SolarArray
 Refer
  Component PlateSa
 Rotate 45 0 90
-Translate 0.0 0.890377439199 0.851
+Translate 0.0 0.865372435696 0.851
 EndRefer 
 Refer
  Component PlateSa
 Rotate 45 0 90
-Translate -0 -0.890377439199 0.851
+Translate -0 -0.865372435696 0.851
 EndRefer 
 Refer
  Component PlateSa
 Rotate 225 0 90
-Translate 0.0 0.890377439199 0.861
+Translate 0.0 0.865372435696 0.861
 EndRefer 
 Refer
  Component PlateSa
 Rotate 225 0 90
-Translate -0 -0.890377439199 0.861
+Translate -0 -0.865372435696 0.861
 EndRefer 
 EndComponent
 Component Body

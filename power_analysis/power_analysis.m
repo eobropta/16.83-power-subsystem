@@ -34,7 +34,7 @@ num_orbits = 1;
 mode_power = repmat(mode_power, 1, num_orbits);
 mode_duration = repmat(mode_duration, 1, num_orbits);
 
-stk_mat_file = '../stk_power_data/case_y45_z45_sept_315_2-8';
+stk_mat_file = '../stk_power_data/organized/case_y45_z315_3m_sept_min-energy';
 
 x_solar = 0.8;
 x_batt = 0.6;
