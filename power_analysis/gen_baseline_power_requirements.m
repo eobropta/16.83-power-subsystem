@@ -20,4 +20,3 @@ for i = 1:length(mode_duration)
         mode_power(i) * ones(1, mode_duration(i));
     step = new_step;
 end
-
