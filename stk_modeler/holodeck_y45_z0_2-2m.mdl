@@ -1,0 +1,121 @@
+#Holodeck Power Model modified from TERsat
+#Created: 21 April 2013
+#Name: Holodeck
+#Class: 16.83 Spring 2013
+#Beam: m
+#Length: m
+#Height: m
+#Articulations:No
+#All units in meters
+SolarPanelGroup sa 29.5
+Component PlateBase
+Polygon
+ FaceColor gold4
+ NumVerts 4
+ Data 
+0.253 0.253 0.0
+0.253 -0.253 0.0
+-0.253 -0.253 0.0
+-0.253 0.253 0.0
+EndPolygon
+EndComponent
+Component PlateSide
+Polygon
+ FaceColor gold4
+ NumVerts 4
+ Data 
+0.851 0.253 0.0
+0.851 -0.253 0.0
+-0.851 -0.253 0.0
+-0.851 0.253 0.0
+EndPolygon
+EndComponent
+Component PlateSa
+SolarPanel sa
+Polygon
+ FaceColor blue
+ NumVerts 4
+ Data 
+0.524404424085 0.524404424085 0.0
+0.524404424085 -0.524404424085 0.0
+-0.524404424085 -0.524404424085 0.0
+-0.524404424085 0.524404424085 0.0
+EndPolygon
+EndComponent
+Component Base
+Refer
+ Component PlateBase
+Rotate 0 0 0
+Translate 0.0 0.0 0.0
+EndRefer 
+Refer
+ Component PlateBase
+Rotate 0 0 0
+Translate 0.0 0.0 1.702
+EndRefer 
+EndComponent
+Component Side
+Refer
+ Component PlateSide
+Rotate 0 90 0
+Translate -0.253 0.0 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 0
+Translate 0.253 0.0 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 90
+Translate 0.0 0.253 0.851
+EndRefer 
+Refer
+ Component PlateSide
+Rotate 0 90 90
+Translate 0.0 -0.253 0.851
+EndRefer 
+EndComponent
+Component SolarArray
+Refer
+ Component PlateSa
+Rotate 45 0 90
+Translate 0.0 0.777404424085 0.851
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 45 0 90
+Translate -0 -0.777404424085 0.851
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 225 0 90
+Translate 0.0 0.777404424085 0.861
+EndRefer 
+Refer
+ Component PlateSa
+Rotate 225 0 90
+Translate -0 -0.777404424085 0.861
+EndRefer 
+EndComponent
+Component Body
+  Refer
+ Component Side
+ EndRefer
+ Refer
+ Component Base
+ EndRefer
+ Refer
+ Component SolarArray
+ EndRefer
+  EndComponent
+Component holodeck
+ Root
+ Refer
+ Articulation SolarPoint
+ zRotate Rotate -360 0 360
+ EndArticulation
+ Pointing SolarPoint 0 0 1
+ Component Body
+ EndRefer
+ EndComponent

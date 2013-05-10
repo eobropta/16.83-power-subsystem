@@ -1,9 +1,10 @@
 clear all 
 close all
 
-load('../stk_power_data/case_y45_z45_year_315');
+load('../stk_power_data/organized/case_y45_z135_2-3m_60s_nov');
 
-time = 0:360:(length(power)-1)*360;
+
+time = 0:60:(length(power)-1)*60;
 time = time/24/3600; % days
 
 power = power(1:end/2)
